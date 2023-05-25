@@ -1,0 +1,1 @@
+Move Any Window to center of screen by double click on it.

@@ -1,0 +1,43 @@
+﻿<Window x:Class="Windows_Mover.MainWindow"
+        Loaded="MainWindow_OnLoaded"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Windows_Mover"
+        mc:Ignorable="d"
+        Title="Window Move To Center of Screen" Height="450" Width="800">
+    <Grid Height="{Binding ActualHeight, ElementName=Window}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <TextBox x:Name="textBox" 
+                     TextChanged="TextBox_OnTextChanged"
+                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                     Padding="5"
+            />
+            
+            <ListBox x:Name="listBox" 
+                     ItemsSource="{Binding WindowList}"
+                     VerticalAlignment="Stretch"
+                     HorizontalAlignment="Stretch"
+                        Grid.Row="1"
+                     PreviewMouseDoubleClick="ListBox_OnPreviewMouseDoubleClick"
+                     ScrollViewer.VerticalScrollBarVisibility="Visible"
+                     MouseDoubleClick="ListBox_OnMouseDoubleClick">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Grid>
+</Window>
